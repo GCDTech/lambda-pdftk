@@ -1,3 +1,4 @@
+
 # AWS Lambda + PDFtk Example
 
 This repository provides a working example of using PDFtk within AWS Lambda. AWS Lambda runs on Amazon Linux, which does not officially support PDFtk or GCJ, one of PDFtk's dependencies. This example works by including both a PDFtk binary and the libgcj shared library.
@@ -38,8 +39,8 @@ The entry point to the lambda function, `index.js`, alters the `PATH` and `LD_LI
 
 ## Using PDFtk in Amazon Linux
 
-It should be possible to use the PDFtk binary and GCJ shared library located in the `bin/` directory of this file to run PDFtk in Amazon Linux on EC2. Simply copy them onto the machine and put them in the correct path, or call them directly:
-
 ```
-LD_LIBRARY_PATH=/path/to/libgcj.so.10 /path/to/pdftk --version
+wget -O /usr/lib64/libgcj.so.10 https://github.com/GCDTech/lambda-pdftk/raw/master/bin/libgcj.so.10
+wget -O /usr/bin/pdftk https://github.com/GCDTech/lambda-pdftk/raw/master/bin/pdftk
+chmod a+x /usr/bin/pdftk
 ```
